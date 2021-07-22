@@ -1,5 +1,8 @@
 import React ,{useState, useEffect} from 'react'
 import Photo from "./Photo"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card, Button,Col,Row ,Container} from 'react-bootstrap';
+
 import './App.css';
 
 const App = () =>{
@@ -42,17 +45,24 @@ const App = () =>{
  }
   return(
     <div className="App">
+      <h1>Unsplash</h1>
      <form onSubmit={getSearch} className="search-form">
        <input className="search-bar" type='text' value={search} onChange={updatesearch}/>
        <button className="search-button" type="submit">Search</button>
      </form>
+     <Container>
+
+     <Row>
      {photos.map((photo,key) =>(
+
        <Photo key={key}
          user={photo.user.first_name}
          image={photo.urls.small}
 
        />
      ))}
+     </Row>
+     </Container>
     </div>
   )
 }
